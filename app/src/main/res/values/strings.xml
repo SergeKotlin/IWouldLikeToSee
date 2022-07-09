@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">I\'dLikeToSee</string>
+
+    <string name="nav_header_title">Welcome</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation Header</string>
+
+    <string name="home_screen">I would like to see</string>
+    <string name="movie_selection_screen">Surprise me.. Movie selection</string>
+    <string name="flo_action_btn_desc">TODO</string>
+
 </resources>

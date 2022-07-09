@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <!--  Important: id's of navigation_menu and app_screens_navigation must match! -->
+        <item
+            android:id="@+id/home_screen"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/home_screen" />
+        <item
+            android:id="@+id/movie_selection_screen"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/movie_selection_screen" />
+    </group>
+</menu>
