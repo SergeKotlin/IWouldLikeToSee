@@ -3,7 +3,7 @@
 # Summer 2022
 # App for Films Searching on known API
 # Mission thereabouts: comfortable viewing and selection of movies of the API for personal intentions.
-#
+# 
 1. The skeleton of the user interface on fragments with one activity with a side menu bar.
    1.1. /start created skeleton..
         Worked version ✓/
@@ -18,3 +18,10 @@
         Worked version ✓/
       - added main menu;
       - introduced RecyclerView layout and code (for one screen);
+   1.3 /continued creation skeleton of the user interface..
+        MVVM
+        Worked version ✓/
+      - roughly marked ViewModel with Contract;
+      - configured ClickListener with worked logic for movies cards;
+   
+# Serge, sure.

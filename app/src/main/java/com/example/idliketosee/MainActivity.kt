@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.example.idliketosee.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         initViews()
         setupToolbar()
+        setupClickListeners()
     }
 
     private fun initViews() {
@@ -62,6 +64,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean { // Open side-bar from menu of toolbar
         return contentFragmentController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun setupClickListeners() {
+        binding.appBarMain.floActionBtn.setOnClickListener { view ->
+            Snackbar.make(view, "Future action of Calendar", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show() // TODO
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

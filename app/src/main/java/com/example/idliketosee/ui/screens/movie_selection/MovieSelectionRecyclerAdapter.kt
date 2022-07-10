@@ -5,27 +5,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idliketosee.R
 
-internal class MovieSelectionRecyclerAdapter(context: Context?, private val movies: List<String>) : // В адаптере описывается способ связи между данными и компонентом
+internal class MovieSelectionRecyclerAdapter(context: Context?, // В адаптере описывается способ связи между данными и компонентом
+                                             private val movies: List<String>,
+                                             private val moviePic: Int,
+                                             private val clickListener: MovieClickListener) :
     RecyclerView.Adapter<MovieSelectionRecyclerAdapter.MovieSelectionViewHolder>(){
 
-//    private val movies: List<String>
+//    private val movies: List<String> // можно и тут
     private val inflater: LayoutInflater
 
-    init {
+    init { //
         inflater = LayoutInflater.from(context)
     }
 
-    inner class MovieSelectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){ // Используемые компоненты из макета для отдельного элемента списка
-        // TODO View.OnClickListener {} and "override...onClick" for itemView
-        internal val movieImage: View
-        internal val movieInfo: TextView
+    inner class MovieSelectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), // Используемые компоненты из макета для отдельного элемента списка
+    View.OnClickListener { // 1й вариант OnClickListener
+        val movieImage: View
+        val movieInfo: TextView
 
         init {
             movieImage = itemView.findViewById(R.id.movie_image)
             movieInfo = itemView.findViewById(R.id.movie_info)
+            itemView.setOnClickListener(this) // 1й вариант OnClickListener
+        }
+
+        /*fun click() { //  2й вариант OnClickListener
+            itemView.setOnClickListener { clickListener.onMovieClick(itemView, adapterPosition) }
+        }*/
+
+        override fun onClick(view: View?) { // 1й вариант OnClickListener
+            clickListener.onMovieClick(view, adapterPosition)
         }
     }
 
@@ -38,9 +51,10 @@ internal class MovieSelectionRecyclerAdapter(context: Context?, private val movi
     }
 
     override fun onBindViewHolder(holder: MovieSelectionViewHolder, position: Int) { // Связываем используемые текстовые метки с данными
-        val info = movies[position]
-        holder.movieImage.setBackgroundResource(R.drawable.nature) // todo ЗАГЛУШКА
-        holder.movieInfo.text = info
+        val infoOfMovie = movies[position]
+        // holder.click() 2й вариант OnClickListener
+        holder.movieImage.setBackgroundResource(moviePic)
+        holder.movieInfo.text = infoOfMovie
         /* Параметр position отвечает за id в списке, по которому можно получить нужные данные. */
     }
 
@@ -51,4 +65,14 @@ internal class MovieSelectionRecyclerAdapter(context: Context?, private val movi
         Обычно данные однотипны, например, список строк. Можно просто вычислить и передать его длину. */
     }
 
+    // TODO may Future
+    interface MovieClickListener { // Пусть фрагмент реализует реакцию на клик
+        fun onMovieClick(view: View?, position: Int)
+    }
 }
+
+/* Как работают интерфейсы.. (thx Neko)
+«Пульт» - интерфейс, «телик» - сложная система (логика фрагмента/активити),
+«человек»(запускатель) - в данном случае RecyclerAdapter.
+Пульт реализуется рядом с теликом (во фрагменте), человек (адаптер) также узнаёт о нём.
+ */
