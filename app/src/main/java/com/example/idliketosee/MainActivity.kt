@@ -2,6 +2,9 @@ package com.example.idliketosee
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -13,16 +16,17 @@ import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var toolbar:  Toolbar
-    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var appNavBar: NavigationView
     private lateinit var contentFragmentController: NavController
-
     private var navHomeFragment by Delegates.notNull<Int>() // todo Прилично так делать?
     private var navMovieSelectionFragment by Delegates.notNull<Int>() // todo -//-
+    private lateinit var drawerLayout: DrawerLayout
+
+    private var menuMain by Delegates.notNull<Int>() // todo -//-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         navHomeFragment = R.id.home_screen
         navMovieSelectionFragment = R.id.movie_selection_screen
         drawerLayout = binding.drawerLayout
+        menuMain = R.menu.menu_main
+
     }
 
     private fun setupToolbar() {
@@ -58,9 +64,16 @@ class MainActivity : AppCompatActivity() {
         return contentFragmentController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    /* // todo Есть такая настройка.. Но мне вроде не нужна "Кроме того, вам необходимо переопределить onOptionsItemSelected(MenuItem) и связать пункты меню с пунктами назначения. Вот так:"
-    // У меня и так всё связано, без этой фигни. Важно лишь, чтобы id'шники navigation_menu и app_screens_navigation - совпадали!
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(menuMain, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return item.onNavDestinationSelected(contentFragmentController) || super.onOptionsItemSelected(item)
-    }*/
+        when (item.itemId) {
+            R.id.first_action_menu_main -> { Toast.makeText(this,
+                getString(R.string.first_action_menu_main), Toast.LENGTH_SHORT).show() }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

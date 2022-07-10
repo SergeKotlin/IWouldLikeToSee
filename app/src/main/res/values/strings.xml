@@ -5,8 +5,10 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation Header</string>
 
+    <string name="first_action_menu_main">What action do you want?</string>
+
     <string name="home_screen">I would like to see</string>
-    <string name="movie_selection_screen">Surprise me.. Movie selection</string>
+    <string name="movie_selection_screen">Movie selection</string>
     <string name="flo_action_btn_desc">TODO</string>
 
 </resources>

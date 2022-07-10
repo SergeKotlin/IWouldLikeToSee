@@ -14,3 +14,7 @@
          menu of screens selection for navigation header;
          toolbar for app main bar;
       - init screens fragments classes;
+   1.2 /continued creation skeleton of the user interface..
+        Worked version ✓/
+      - added main menu;
+      - introduced RecyclerView layout and code (for one screen);

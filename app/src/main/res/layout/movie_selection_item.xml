@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation">
+
+    <!--  Как и у NestedScrollView - у CardView м.б лишь один ребёнок.
+           Т.е наполнение стоит заворачивать в какой-то общий View-элемент  -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/card_view_padding">
+
+        <View
+            android:id="@+id/movie_image"
+            android:layout_width="@dimen/movie_image_width"
+            android:minWidth="100dp"
+            android:layout_height="@dimen/movie_image_height"
+            android:minHeight="100dp"/>
+            <!-- TODO как грамотнее габариты задать (layout_width и _height): для картинки?
+                             и для LinearLayout, RecyclerView? (в них карточка вкладывается) -->
+
+        <TextView
+            android:id="@+id/movie_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/movie_info_text_size"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

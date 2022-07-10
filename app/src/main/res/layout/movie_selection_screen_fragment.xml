@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.screens.movie_selection.MovieSelectionFragment">
+
+    <!--  Не забывать false'ить встроенный скроллинг RecyclerView, если используем
+    внешний NestedScrolling android:nestedScrollingEnabled="false"
+         ! Но тогда перестают работать методы recyclerView.scrollToPosition() и т.п.  -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_movie_selection"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="horizontal"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/movie_selection_item" />
+
+    <TextView
+        android:id="@+id/movie_selection_bar_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/movie_info_margin"
+        android:layout_marginTop="@dimen/movie_info_margin"
+        android:layout_marginEnd="@dimen/movie_info_margin"
+        android:textAlignment="center"
+        android:textSize="@dimen/movie_selection_bar_info_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_movie_selection" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
