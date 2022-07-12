@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/movie_selection_screen"
-        android:name="com.example.idliketosee.ui.screens.movie_selection.MovieSelectionFragment"
+        android:name="com.example.idliketosee.ui.screens.movieSelection.MovieSelectionFragment"
         android:label="@string/movie_selection_screen"
         tools:layout="@layout/movie_selection_screen_fragment" />
 

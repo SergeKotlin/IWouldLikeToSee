@@ -1,25 +1,25 @@
-package com.example.idliketosee.ui.screens.movie_selection
+package com.example.idliketosee.ui.screens.movieSelection
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idliketosee.R
 
-internal class MovieSelectionRecyclerAdapter(context: Context?, // В адаптере описывается способ связи между данными и компонентом
+internal class MovieSelectionRecyclerAdapter( // В адаптере описывается способ связи между данными и компонентом
+                                             //context: Context?,  //todo To delete (WORK ON MISTAKES)
                                              private val movies: List<String>,
                                              private val moviePic: Int,
                                              private val clickListener: MovieClickListener) :
     RecyclerView.Adapter<MovieSelectionRecyclerAdapter.MovieSelectionViewHolder>(){
 
 //    private val movies: List<String> // можно и тут
-    private val inflater: LayoutInflater
+//    private val inflater: LayoutInflater //todo To delete (WORK ON MISTAKES)
 
-    init { //
-        inflater = LayoutInflater.from(context)
+    init {
+//        inflater = LayoutInflater.from(context) //todo To delete (WORK ON MISTAKES)
     }
 
     inner class MovieSelectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), // Используемые компоненты из макета для отдельного элемента списка
@@ -43,7 +43,9 @@ internal class MovieSelectionRecyclerAdapter(context: Context?, // В адапт
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSelectionViewHolder {
-        val itemView = inflater.inflate(R.layout.movie_selection_item, parent, false)
+//        val itemView = inflater.inflate(R.layout.movie_selection_item, parent, false) //todo To delete (WORK ON MISTAKES)
+        val itemView: View = LayoutInflater.from(parent.context)
+            .inflate(R.layout.movie_selection_item, parent, false)
         return MovieSelectionViewHolder(itemView)
         /* Нужно указать id макета для отдельного элемента списка и вернуть объект класса ViewHolder.
          Если на экране можно отобразить 9 элементов списка, RecyclerView создаст 11-12 элементов (с запасом).

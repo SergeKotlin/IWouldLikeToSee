@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.screens.movie_selection.MovieSelectionFragment">
+    tools:context=".ui.screens.movieSelection.MovieSelectionFragment">
 
     <!--  Не забывать false'ить встроенный скроллинг RecyclerView, если используем
     внешний NestedScrolling android:nestedScrollingEnabled="false"

@@ -1,4 +1,4 @@
-package com.example.idliketosee.ui.screens.movie_selection
+package com.example.idliketosee.ui.screens.movieSelection
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -36,7 +36,7 @@ class MovieSelectionFragment : Fragment(), MovieSelectionRecyclerAdapter.MovieCl
             layoutManager = LinearLayoutManager(
                 context, LinearLayoutManager.HORIZONTAL, false
             )
-            adapter = MovieSelectionRecyclerAdapter(context,  toDoMoviesList(),   R.drawable.nature,
+            adapter = MovieSelectionRecyclerAdapter(toDoMoviesList(),   R.drawable.nature,
                 this@MovieSelectionFragment)
         }
     }

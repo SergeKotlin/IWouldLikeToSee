@@ -1,6 +1,5 @@
-package com.example.idliketosee.ui.screens.movie_selection
+package com.example.idliketosee.ui.screens.movieSelection
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
