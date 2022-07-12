@@ -23,5 +23,10 @@
         Worked version ✓/
       - roughly marked ViewModel with Contract;
       - configured ClickListener with worked logic for movies cards;
+      - 
+   1.4 /WORK ON MISTAKES
+        Worked version ✓/
+      - fixed package names
+      - removed "context" passing to adapter
    
 # Serge, sure.
