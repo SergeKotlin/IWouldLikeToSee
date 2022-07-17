@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.idliketosee.R
-import com.example.idliketosee.data.entities.Movie
+import com.example.idliketosee.data.model.entities.Movie
 import com.example.idliketosee.databinding.MovieScreenFragmentBinding
 import kotlinx.android.synthetic.main.movie_screen_fragment.*
 

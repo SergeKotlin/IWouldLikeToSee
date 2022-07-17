@@ -1,6 +1,9 @@
 package com.example.idliketosee.ui.screens.movieSelection.model
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.idliketosee.data.model.RepoImpl
+import com.example.idliketosee.domain.Repository
 
 class MovieSelectionContract { // Для удобства разработчика
     enum class MovieSelectionState {
@@ -8,14 +11,18 @@ class MovieSelectionContract { // Для удобства разработчик
     }
 
     interface ViewModelMovieSelection { // Вью-"модель" — описание структуры и состояний
-        val screenState: LiveData<MovieSelectionState>
+        val liveDataToObserve: LiveData<MovieSelectionState> // screenState
+        val repository: Repository
+
         val screenOrientationPortrait: LiveData<Boolean>
-        val selectMovie: LiveData<Int>
         val searchStringMovie: LiveData<String>
+        val selectMovie: LiveData<Int>
 
+//        fun getLiveData()
+        fun getMovieListFromLocalSource()
 
-        fun onClickMovie (selectedMovie: Int) // Выбор фильма для перехода на экран его описания
         fun onSearchMovie(searchString: String)
+        fun onClickMovie (selectedMovie: Int) // Выбор фильма для перехода на экран его описания
     }
 }
 

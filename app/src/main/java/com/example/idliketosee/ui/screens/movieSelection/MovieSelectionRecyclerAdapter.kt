@@ -1,22 +1,19 @@
 package com.example.idliketosee.ui.screens.movieSelection
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idliketosee.R
-import com.example.idliketosee.data.entities.Movie
-import com.example.idliketosee.data.entities.MovieList
+import com.example.idliketosee.data.model.entities.Movie
 
 internal class MovieSelectionRecyclerAdapter( // В адаптере описывается способ связи между данными и компонентом
                                              //context: Context?,  //todo To delete (WORK ON MISTAKES)
-                                             private var onItemViewClickListener: MovieSelectionFragment.OnItemViewClickListener?,
-                                             private val movies: List<Movie>,
-                                             private val moviePic: Int,
-                                             private val clickListener: MovieClickListener) :
+    private var onItemViewClickListener: MovieSelectionFragment.OnItemViewClickListener?,
+    private val movies: List<Movie>,
+    private val moviePic: Int,
+    private val clickListener: MovieClickListener) :
                                              RecyclerView.Adapter<MovieSelectionRecyclerAdapter.MovieSelectionViewHolder>(){
 
 //    private val movies: List<String> // можно и тут

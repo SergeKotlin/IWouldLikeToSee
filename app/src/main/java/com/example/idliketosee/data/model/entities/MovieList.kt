@@ -1,11 +1,11 @@
-package com.example.idliketosee.data.entities
+package com.example.idliketosee.data.model.entities
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MovieList(
-    val movie: Movie = Movie(),
+    val movie: Movie = Movie(), // тип и default-значение
     val movieList: List<Movie> = listOf(movie)
 ) : Parcelable
 

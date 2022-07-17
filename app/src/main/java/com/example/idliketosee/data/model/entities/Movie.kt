@@ -1,4 +1,4 @@
-package com.example.idliketosee.data.entities
+package com.example.idliketosee.data.model.entities
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

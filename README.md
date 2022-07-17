@@ -28,5 +28,9 @@
         Worked version ✓/
       - fixed package names
       - removed "context" passing to adapter
+2. Independent fragment to describe the film.
+   2.1. /Worked version ✓/
+      - added entities and default local data;
+      - added movie details fragment and bound this with movie list fragment
    
 # Serge, sure.

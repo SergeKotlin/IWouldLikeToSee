@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idliketosee.R
-import com.example.idliketosee.data.entities.Movie
-import com.example.idliketosee.data.entities.MovieList
-import com.example.idliketosee.data.entities.getLocalMovieList
+import com.example.idliketosee.data.model.entities.Movie
+import com.example.idliketosee.data.model.entities.getLocalMovieList
 import com.example.idliketosee.databinding.MovieSelectionScreenFragmentBinding
 import com.example.idliketosee.ui.screens.movieCard.MovieCardFragment
 import com.example.idliketosee.ui.screens.movieCard.MovieCardViewModel
@@ -22,21 +23,23 @@ class MovieSelectionFragment : Fragment(), MovieSelectionRecyclerAdapter.MovieCl
 
     private lateinit var binding: MovieSelectionScreenFragmentBinding
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: MovieSelectionRecyclerAdapter
-    private val viewModel: MovieSelectionViewModel by viewModels<MovieSelectionViewModel>()
-    private val movieCardViewModel: MovieCardViewModel by viewModels<MovieCardViewModel>()
+    private lateinit var movieSelectionAdapter: MovieSelectionRecyclerAdapter
+    private lateinit var viewModel: MovieSelectionViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         super.onCreate(savedInstanceState)
 
         binding = MovieSelectionScreenFragmentBinding.inflate(inflater, container, false)
-
-        setupRecyclerView() // TODO верно, что в onCreateView??
-        initUiEvents()
-        initViewModel(viewModel)
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupRecyclerView()
+        initUiEvents()
+        initViewModel()
     }
 
     private fun setupRecyclerView() {
@@ -62,12 +65,6 @@ class MovieSelectionFragment : Fragment(), MovieSelectionRecyclerAdapter.MovieCl
         }
     }
 
-    /*private fun getMoviesList(): List<MovieList> { // todo Deprecated
-        val data = mutableListOf<String>()
-        getLocalMovieList().forEach { i -> data.add("${i.name}") }
-        return data
-    }*/
-
     private fun initUiEvents() {
         binding.apply {
            movieSelectionBarInfo.setOnClickListener {
@@ -79,11 +76,15 @@ class MovieSelectionFragment : Fragment(), MovieSelectionRecyclerAdapter.MovieCl
         }
     }
 
-    private fun initViewModel(viewModel: MovieSelectionViewModel) {
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this)[MovieSelectionViewModel::class.java]
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
+            renderData() }) // Подписывается на наблюдение LiveData (и возвращает ссылку на неё), выполняя renderData()
+        viewModel.getMovieListFromLocalSource()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun renderData() {
+        // to do something
     }
 
     override fun onMovieClick(view: View?, position: Int) {
@@ -92,29 +93,18 @@ class MovieSelectionFragment : Fragment(), MovieSelectionRecyclerAdapter.MovieCl
         Toast.makeText(view?.context, "Карточка Фильма ${position+1} сейчас появится", Toast.LENGTH_SHORT).show() // todo ЗАГЛУШКА
     } //todo Deprecated
 
-    private fun moveToMovieCardFragment(view: View?, position: Int) {
-        binding.movieSelectionBarInfo.setOnClickListener {
-            movieCardViewModel.movieId.observe(this) {
-                movieCardViewModel.downloadMovieInfo(it)
-            }
-        }
-
-        /*this.supportFragmentManager
-            ?.beginTransaction()
-            ?.replace()*/
-    } //todo Deprecated
-
     interface OnItemViewClickListener {
         fun onItemViewClick(movie: Movie)
     }
 
     override fun onDestroy() {
-        adapter.resetListener()
+        movieSelectionAdapter.resetListener()
         super.onDestroy()
         /* Обязательно обнуляем чтобы избежать утечек и нежелаемого
         поведения. (В Activity ничего похожего делать не требуется) */
     }
 
     companion object {
+        fun newInstance() = MovieSelectionFragment()
     }
 }
