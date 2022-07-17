@@ -1,4 +1,4 @@
-package com.example.idliketosee
+package com.example.idliketosee.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
+import com.example.idliketosee.R
 import com.example.idliketosee.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -86,3 +87,8 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
+
+/* Варианты месседжей:
+● через Snackbar; // com.google.android.material:material:1.1.0
+● через диалоговые окна;
+● через отображения разных layout — менять их видимость в зависимости от состояния.  */

@@ -1,7 +1,8 @@
-package com.example.idliketosee.ui.screens.movieSelection
+package com.example.idliketosee.ui.screens.movieSelection.model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.idliketosee.ui.screens.movieSelection.model.MovieSelectionContract
 
 class MovieSelectionViewModel: ViewModel(), MovieSelectionContract.ViewModelMovieSelection {
     /* В Mutable LiveData можно отправлять-менять значение.

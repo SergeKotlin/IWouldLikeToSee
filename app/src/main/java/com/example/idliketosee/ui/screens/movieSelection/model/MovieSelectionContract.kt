@@ -1,4 +1,4 @@
-package com.example.idliketosee.ui.screens.movieSelection
+package com.example.idliketosee.ui.screens.movieSelection.model
 
 import androidx.lifecycle.LiveData
 
@@ -22,3 +22,7 @@ class MovieSelectionContract { // Для удобства разработчик
 /* В MVVM направление информации:
 как бы вьюшка ходит в презентер;
 подписки вместо управляющих методов. */
+
+/* MVP способно напрямую сказать что-то делать вью. А также имеет чёткую логику разделения.
+MVVM на подписках и слушателях приучена к отключению view (умеет переживать поворот экрана).
+(Личный опыт от VovaFishing: Если портретная ориентация, то MVP. Если необходима работа в двух ориентациях, то MVVM. */
