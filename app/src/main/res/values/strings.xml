@@ -11,4 +11,14 @@
     <string name="movie_selection_screen">Movie selection</string>
     <string name="flo_action_btn_desc">TODO</string>
 
+    <string name="movie_name">Movie name</string>
+    <string name="movie_desc">Movie description</string>
+    <string name="movie_genre">Movie genres</string>
+    <string name="movie_duration">Movie duration</string>
+    <string name="movie_rating">Movie rating</string>
+    <string name="movie_release_date">Movie release date</string>
+    <string name="movie_budget">Movie budget</string>
+    <string name="movie_revenue">Movie revenue</string>
+    <string name="movie_announcement">Movie announcement</string>
+
 </resources>
